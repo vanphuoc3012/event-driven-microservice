@@ -14,11 +14,18 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>event-driven-microservice</name>
     <description>Event-driven microservice</description>
+    <modules>
+        <module>twitter-to-kafka-service</module>
+    </modules>
     <packaging>pom</packaging>
+
     <properties>
         <java.version>11</java.version>
         <spring-boot.version>2.7.13</spring-boot.version>
+        <maven.compiler.version>3.11.0</maven.compiler.version>
+        <twitter4j.version>4.0.7</twitter4j.version>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -26,13 +33,19 @@
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.twitter4j</groupId>
+                <artifactId>twitter4j-stream</artifactId>
+                <version>${twitter4j.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -50,7 +63,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>${maven.compiler.version}</version>
                 <configuration>
                     <release>${java.version}</release>
                 </configuration>
