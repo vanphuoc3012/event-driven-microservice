@@ -1,0 +1,17 @@
+twitter-to-kafka-service:
+  twitter-keyword:
+    - Java
+    - Spring
+    - Microservices
+    - Kafka
+    - Elasticsearch
+
+logging:
+  level:
+    root: info
+  file:
+    name: logs/twitter-to-kafka-service.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 10
