@@ -1,13 +1,11 @@
 package com.event.driven.microservices.rail.network.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-@Configuration
-@EnableWebSocketMessageBroker
+//@Configuration
+//@EnableWebSocketMessageBroker
 public class StompConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
@@ -17,9 +15,9 @@ public class StompConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.enableStompBrokerRelay("/topic")
-                .setClientLogin("vanphuoc3012@gmail.com")
+                .setSystemLogin("vanphuoc3012@gmail.com")
                 .setRelayHost("publicdatafeeds.networkrail.co.uk")
                 .setRelayPort(61618)
-                .setClientPasscode("Qy4eAWsNwR24!na");
+                .setSystemPasscode("Qy4eAWsNwR24!na");
     }
 }

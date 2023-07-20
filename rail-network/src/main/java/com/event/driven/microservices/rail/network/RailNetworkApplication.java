@@ -1,5 +1,6 @@
 package com.event.driven.microservices.rail.network;
 
+import com.event.driven.microservices.rail.network.controller.EventSourceClient;
 import com.event.driven.microservices.rail.network.runner.StompRunner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @RequiredArgsConstructor
 public class RailNetworkApplication implements CommandLineRunner {
     private final StompRunner stompRunner;
+    private final EventSourceClient eventSourceClient;
 
     public static void main(String[] args) {
         SpringApplication.run(RailNetworkApplication.class, args);
@@ -18,5 +20,6 @@ public class RailNetworkApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         stompRunner.start();
+        eventSourceClient.consumeEvent();
     }
 }
