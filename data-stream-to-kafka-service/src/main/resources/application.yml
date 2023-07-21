@@ -1,11 +1,13 @@
-twitter-to-kafka-service:
-  twitter-keywords:
+data-stream-to-kafka-service:
+  data-stream-filter-keywords:
     - Java
     - Spring
     - Microservices
     - Kafka
     - Elasticsearch
-
+  domain-filter:
+    - en.wikipedia.org
+    - vi.wikipedia.org
 logging:
   level:
     root: info

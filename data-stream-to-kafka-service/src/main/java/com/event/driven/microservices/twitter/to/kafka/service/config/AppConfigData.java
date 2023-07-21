@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-@ConfigurationProperties(prefix = "twitter-to-kafka-service")
+@ConfigurationProperties(prefix = "data-stream-to-kafka-service")
 @Data
 public class AppConfigData {
-    private List<String> twitterKeywords;
+    private List<String> dataStreamFilterKeywords;
+    private List<String> domainFilter;
 }

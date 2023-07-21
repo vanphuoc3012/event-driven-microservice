@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
+import java.util.Objects;
+
 @Component
 @Slf4j
 public class EventSourceClient {
@@ -32,16 +34,25 @@ public class EventSourceClient {
                     String value = null;
                     try {
                         if (content.data() != null) {
-                            value = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(mapper.readTree(content.data()));
+                            var jsonNode = mapper.readTree(content.data());
+
+                            value = jsonNode.get("server_name").asText();
+
+                            String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
+                            if (Objects.nonNull(value) && "vi.wikipedia.org".equals(value)) {
+                                log.info("Pretty Json: " + prettyJson);
+                            }
                         }
+
                     } catch (JsonProcessingException e) {
                         log.error("Error parsing data: " + e.getMessage());
                     }
 
-                    log.info("Received event: " + content.event() + " data: " + value);
-
                 }),
-                (error -> log.error("Error receiving SSE: " + error)),
+                (error -> {
+                    log.error("Error receiving SSE: " + error);
+                    error.printStackTrace();
+                }),
                 () -> log.info("Completed!!!"));
     }
 

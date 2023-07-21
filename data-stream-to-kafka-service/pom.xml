@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.twitter.to.kafka.service</groupId>
-    <artifactId>twitter-to-kafka-service</artifactId>
+    <artifactId>data-stream-to-kafka-service</artifactId>
 
     <dependencies>
         <dependency>

@@ -15,7 +15,7 @@
     <name>event-driven-microservice</name>
     <description>Event-driven microservice</description>
     <modules>
-        <module>twitter-to-kafka-service</module>
+        <module>data-stream-to-kafka-service</module>
         <module>rail-network</module>
     </modules>
 

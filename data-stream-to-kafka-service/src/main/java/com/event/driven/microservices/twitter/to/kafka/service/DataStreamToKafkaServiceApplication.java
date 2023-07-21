@@ -13,19 +13,19 @@ import org.springframework.jms.annotation.EnableJms;
 @Slf4j
 @RequiredArgsConstructor
 @EnableJms
-public class TwitterToKafkaServiceApplication implements CommandLineRunner {
+public class DataStreamToKafkaServiceApplication implements CommandLineRunner {
     private final AppConfigData appConfigData;
     private final StreamRunner streamRunner;
 
     public static void main(String[] args) {
-        SpringApplication.run(TwitterToKafkaServiceApplication.class, args);
+        SpringApplication.run(DataStreamToKafkaServiceApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
         log.info("TwitterToKafkaServiceApplication starting...");
         log.info(appConfigData.getTwitterKeywords()
-                              .toString());
+                .toString());
         streamRunner.start();
     }
 }
