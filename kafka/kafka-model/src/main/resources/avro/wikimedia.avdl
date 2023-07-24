@@ -1,0 +1,55 @@
+/*
+ * Comment for license information.
+ */
+/**
+ * Doc comment.
+ */
+@namespace("com.event.driven.microservices.kafka.avro.model")
+protocol WikimediaProtocol {
+	// Insert your protocol elements here
+	record RCLengthArvoModel {
+		long? old;
+		long new;
+	}
+
+	record RCRevisionArvoModel {
+		long? old;
+		long new;
+	}
+
+	record MetadataArvoModel {
+		string uri;
+		string requestId;
+		string id;
+		string dt;
+		string domain;
+		string stream;
+		string topic;
+		string partition;
+		string offset;
+	}
+
+	record WikimediaRCArvoModel {
+		string rcschema;
+		MetadataArvoModel meta;
+		long id;
+		string type;
+		long rcnamespace;
+		string title;
+		string titleUrl;
+		string comment;
+		string timestamp;
+		string user;
+		boolean bot;
+		string notifyUrl;
+		boolean minor;
+		boolean patrolled;
+		RCLengthArvoModel? length;
+		RCRevisionArvoModel? revision;
+		string serverUrl;
+		string serverName;
+		string serverScriptPath;
+		string wiki;
+		string parsedcomment;
+	}
+}

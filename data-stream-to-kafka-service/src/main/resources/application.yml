@@ -6,7 +6,7 @@ data-stream-to-kafka-service:
     - Kafka
     - Elasticsearch
   domain-filter:
-    - en.wikipedia.org
+    #    - en.wikipedia.org
     - vi.wikipedia.org
 logging:
   level:

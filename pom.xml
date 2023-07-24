@@ -16,7 +16,8 @@
     <description>Event-driven microservice</description>
     <modules>
         <module>data-stream-to-kafka-service</module>
-        <module>rail-network</module>
+        <module>app-config-data</module>
+        <module>kafka</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -27,6 +28,7 @@
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <lombok.version>1.18.28</lombok.version>
         <twittered.version>2.23</twittered.version>
+        <avro.version>1.11.1</avro.version>
     </properties>
 
     <dependencyManagement>
@@ -73,6 +75,12 @@
                 <version>${spring-boot.version}</version>
                 <optional>true</optional>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${avro.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -92,7 +100,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.version}</version>
                 <configuration>
-                    <release>${java.version}</release>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
