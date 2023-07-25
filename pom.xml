@@ -11,45 +11,66 @@
     </parent>
     <groupId>com.event.driven.microservice</groupId>
     <artifactId>event-driven-microservice</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${project.version}</version>
     <name>event-driven-microservice</name>
     <description>Event-driven microservice</description>
+
     <modules>
         <module>data-stream-to-kafka-service</module>
         <module>app-config-data</module>
         <module>kafka</module>
+        <module>common-config</module>
     </modules>
 
     <packaging>pom</packaging>
 
     <properties>
+        <project.version>0.0.1-SNAPSHOT</project.version>
         <java.version>11</java.version>
         <spring-boot.version>2.7.13</spring-boot.version>
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <lombok.version>1.18.28</lombok.version>
         <twittered.version>2.23</twittered.version>
         <avro.version>1.11.1</avro.version>
+        <spring-kafka.version>3.0.9</spring-kafka.version>
+        <spring-retry.version>2.0.2</spring-retry.version>
     </properties>
 
     <dependencyManagement>
+
         <dependencies>
+            <!--Local dependencies-->
+            <dependency>
+                <groupId>com.event.driven.microservice</groupId>
+                <artifactId>app-config-data</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.event.driven.microservices</groupId>
+                <artifactId>common-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--Spring dependencies-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-websocket</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
-
 
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -57,17 +78,18 @@
                 <version>${lombok.version}</version>
                 <scope>compile</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-activemq</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-webflux</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
-
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -81,6 +103,26 @@
                 <artifactId>avro</artifactId>
                 <version>${avro.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.retry</groupId>
+                <artifactId>spring-retry</artifactId>
+                <version>${spring-retry.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

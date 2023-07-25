@@ -1,6 +1,6 @@
 package com.event.driven.microservices.twitter.to.kafka.service;
 
-import com.event.driven.microservices.app.config.DataStreamToKafkaConfig;
+import com.event.driven.microservices.app.config.DataStreamToKafkaConfigData;
 import com.event.driven.microservices.twitter.to.kafka.service.runner.StreamRunner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @RequiredArgsConstructor
 @ComponentScan("com.event.driven.microservices")
 public class DataStreamToKafkaServiceApplication implements CommandLineRunner {
-    private final DataStreamToKafkaConfig appConfigData;
+    private final DataStreamToKafkaConfigData appConfigData;
     private final StreamRunner streamRunner;
 
     public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class DataStreamToKafkaServiceApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("TwitterToKafkaServiceApplication starting...");
         log.info(appConfigData.getDataStreamFilterKeywords()
-                              .toString());
+                .toString());
         streamRunner.start();
     }
 }

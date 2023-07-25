@@ -9,7 +9,8 @@ import java.util.List;
 @Configuration
 @ConfigurationProperties(prefix = "data-stream-to-kafka-service")
 @Data
-public class DataStreamToKafkaConfig {
+public class DataStreamToKafkaConfigData {
     private List<String> dataStreamFilterKeywords;
     private List<String> domainFilter;
+
 }
