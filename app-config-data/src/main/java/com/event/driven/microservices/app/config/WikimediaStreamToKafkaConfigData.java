@@ -7,9 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-@ConfigurationProperties(prefix = "data-stream-to-kafka-service")
+@ConfigurationProperties(prefix = "wikimedia-stream-to-kafka-service")
 @Data
-public class DataStreamToKafkaConfigData {
+public class WikimediaStreamToKafkaConfigData {
+    private String streamUrl;
     private List<String> dataStreamFilterKeywords;
     private List<String> domainFilter;
 

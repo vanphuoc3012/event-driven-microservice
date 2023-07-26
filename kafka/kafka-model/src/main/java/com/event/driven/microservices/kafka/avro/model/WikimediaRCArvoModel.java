@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -2345060016903772777L;
+  private static final long serialVersionUID = -2945583155308035514L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WikimediaRCArvoModel\",\"namespace\":\"com.event.driven.microservices.kafka.avro.model\",\"fields\":[{\"name\":\"rcschema\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"meta\",\"type\":{\"type\":\"record\",\"name\":\"MetadataArvoModel\",\"fields\":[{\"name\":\"uri\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"requestId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"dt\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"domain\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"stream\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"topic\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"partition\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"offset\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}},{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"type\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rcnamespace\",\"type\":\"long\"},{\"name\":\"title\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"titleUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"comment\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"user\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"bot\",\"type\":\"boolean\"},{\"name\":\"notifyUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"minor\",\"type\":\"boolean\"},{\"name\":\"patrolled\",\"type\":\"boolean\"},{\"name\":\"length\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"RCLengthArvoModel\",\"fields\":[{\"name\":\"old\",\"type\":[\"null\",\"long\"]},{\"name\":\"new\",\"type\":\"long\"}]}]},{\"name\":\"revision\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"RCRevisionArvoModel\",\"fields\":[{\"name\":\"old\",\"type\":[\"null\",\"long\"]},{\"name\":\"new\",\"type\":\"long\"}]}]},{\"name\":\"serverUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"serverName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"serverScriptPath\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"wiki\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"parsedcomment\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WikimediaRCArvoModel\",\"namespace\":\"com.event.driven.microservices.kafka.avro.model\",\"fields\":[{\"name\":\"rcschema\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"meta\",\"type\":{\"type\":\"record\",\"name\":\"RCMetadataArvoModel\",\"fields\":[{\"name\":\"uri\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"requestId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"dt\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"domain\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"stream\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"topic\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"partition\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"offset\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}},{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"type\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rcnamespace\",\"type\":\"long\"},{\"name\":\"title\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"titleUrl\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"comment\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"user\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"bot\",\"type\":\"boolean\"},{\"name\":\"notifyUrl\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"minor\",\"type\":\"boolean\"},{\"name\":\"patrolled\",\"type\":\"boolean\"},{\"name\":\"length\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"RCLengthArvoModel\",\"fields\":[{\"name\":\"old\",\"type\":[\"null\",\"long\"]},{\"name\":\"new\",\"type\":\"long\"}]}]},{\"name\":\"revision\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"RCRevisionArvoModel\",\"fields\":[{\"name\":\"old\",\"type\":[\"null\",\"long\"]},{\"name\":\"new\",\"type\":\"long\"}]}]},{\"name\":\"serverUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"serverName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"serverScriptPath\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"wiki\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"parsedcomment\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -74,7 +74,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
   }
 
   private java.lang.String rcschema;
-  private com.event.driven.microservices.kafka.avro.model.MetadataArvoModel meta;
+  private com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel meta;
   private long id;
   private java.lang.String type;
   private long rcnamespace;
@@ -126,7 +126,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
    * @param wiki The new value for wiki
    * @param parsedcomment The new value for parsedcomment
    */
-  public WikimediaRCArvoModel(java.lang.String rcschema, com.event.driven.microservices.kafka.avro.model.MetadataArvoModel meta, java.lang.Long id, java.lang.String type, java.lang.Long rcnamespace, java.lang.String title, java.lang.String titleUrl, java.lang.String comment, java.lang.String timestamp, java.lang.String user, java.lang.Boolean bot, java.lang.String notifyUrl, java.lang.Boolean minor, java.lang.Boolean patrolled, com.event.driven.microservices.kafka.avro.model.RCLengthArvoModel length, com.event.driven.microservices.kafka.avro.model.RCRevisionArvoModel revision, java.lang.String serverUrl, java.lang.String serverName, java.lang.String serverScriptPath, java.lang.String wiki, java.lang.String parsedcomment) {
+  public WikimediaRCArvoModel(java.lang.String rcschema, com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel meta, java.lang.Long id, java.lang.String type, java.lang.Long rcnamespace, java.lang.String title, java.lang.String titleUrl, java.lang.String comment, java.lang.String timestamp, java.lang.String user, java.lang.Boolean bot, java.lang.String notifyUrl, java.lang.Boolean minor, java.lang.Boolean patrolled, com.event.driven.microservices.kafka.avro.model.RCLengthArvoModel length, com.event.driven.microservices.kafka.avro.model.RCRevisionArvoModel revision, java.lang.String serverUrl, java.lang.String serverName, java.lang.String serverScriptPath, java.lang.String wiki, java.lang.String parsedcomment) {
     this.rcschema = rcschema;
     this.meta = meta;
     this.id = id;
@@ -191,7 +191,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: rcschema = value$ != null ? value$.toString() : null; break;
-    case 1: meta = (com.event.driven.microservices.kafka.avro.model.MetadataArvoModel)value$; break;
+    case 1: meta = (com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel)value$; break;
     case 2: id = (java.lang.Long)value$; break;
     case 3: type = value$ != null ? value$.toString() : null; break;
     case 4: rcnamespace = (java.lang.Long)value$; break;
@@ -236,7 +236,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
    * Gets the value of the 'meta' field.
    * @return The value of the 'meta' field.
    */
-  public com.event.driven.microservices.kafka.avro.model.MetadataArvoModel getMeta() {
+  public com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel getMeta() {
     return meta;
   }
 
@@ -245,7 +245,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
    * Sets the value of the 'meta' field.
    * @param value the value to set.
    */
-  public void setMeta(com.event.driven.microservices.kafka.avro.model.MetadataArvoModel value) {
+  public void setMeta(com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel value) {
     this.meta = value;
   }
 
@@ -614,8 +614,8 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
     implements org.apache.avro.data.RecordBuilder<WikimediaRCArvoModel> {
 
     private java.lang.String rcschema;
-    private com.event.driven.microservices.kafka.avro.model.MetadataArvoModel meta;
-    private com.event.driven.microservices.kafka.avro.model.MetadataArvoModel.Builder metaBuilder;
+    private com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel meta;
+    private com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel.Builder metaBuilder;
     private long id;
     private java.lang.String type;
     private long rcnamespace;
@@ -658,7 +658,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
       if (other.hasMetaBuilder()) {
-        this.metaBuilder = com.event.driven.microservices.kafka.avro.model.MetadataArvoModel.newBuilder(other.getMetaBuilder());
+        this.metaBuilder = com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel.newBuilder(other.getMetaBuilder());
       }
       if (isValidValue(fields()[2], other.id)) {
         this.id = data().deepCopy(fields()[2].schema(), other.id);
@@ -883,7 +883,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
       * Gets the value of the 'meta' field.
       * @return The value.
       */
-    public com.event.driven.microservices.kafka.avro.model.MetadataArvoModel getMeta() {
+    public com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel getMeta() {
       return meta;
     }
 
@@ -893,7 +893,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
       * @param value The value of 'meta'.
       * @return This builder.
       */
-    public com.event.driven.microservices.kafka.avro.model.WikimediaRCArvoModel.Builder setMeta(com.event.driven.microservices.kafka.avro.model.MetadataArvoModel value) {
+    public com.event.driven.microservices.kafka.avro.model.WikimediaRCArvoModel.Builder setMeta(com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel value) {
       validate(fields()[1], value);
       this.metaBuilder = null;
       this.meta = value;
@@ -913,12 +913,12 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
      * Gets the Builder instance for the 'meta' field and creates one if it doesn't exist yet.
      * @return This builder.
      */
-    public com.event.driven.microservices.kafka.avro.model.MetadataArvoModel.Builder getMetaBuilder() {
+    public com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel.Builder getMetaBuilder() {
       if (metaBuilder == null) {
         if (hasMeta()) {
-          setMetaBuilder(com.event.driven.microservices.kafka.avro.model.MetadataArvoModel.newBuilder(meta));
+          setMetaBuilder(com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel.newBuilder(meta));
         } else {
-          setMetaBuilder(com.event.driven.microservices.kafka.avro.model.MetadataArvoModel.newBuilder());
+          setMetaBuilder(com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel.newBuilder());
         }
       }
       return metaBuilder;
@@ -930,7 +930,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
      * @return This builder.
      */
 
-    public com.event.driven.microservices.kafka.avro.model.WikimediaRCArvoModel.Builder setMetaBuilder(com.event.driven.microservices.kafka.avro.model.MetadataArvoModel.Builder value) {
+    public com.event.driven.microservices.kafka.avro.model.WikimediaRCArvoModel.Builder setMetaBuilder(com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel.Builder value) {
       clearMeta();
       metaBuilder = value;
       return this;
@@ -1796,7 +1796,7 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
             throw e;
           }
         } else {
-          record.meta = fieldSetFlags()[1] ? this.meta : (com.event.driven.microservices.kafka.avro.model.MetadataArvoModel) defaultValue(fields()[1]);
+          record.meta = fieldSetFlags()[1] ? this.meta : (com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel) defaultValue(fields()[1]);
         }
         record.id = fieldSetFlags()[2] ? this.id : (java.lang.Long) defaultValue(fields()[2]);
         record.type = fieldSetFlags()[3] ? this.type : (java.lang.String) defaultValue(fields()[3]);
@@ -1867,7 +1867,13 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeString(this.rcschema);
+    if (this.rcschema == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      out.writeString(this.rcschema);
+    }
 
     this.meta.customEncode(out);
 
@@ -1879,7 +1885,13 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
 
     out.writeString(this.title);
 
-    out.writeString(this.titleUrl);
+    if (this.titleUrl == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      out.writeString(this.titleUrl);
+    }
 
     out.writeString(this.comment);
 
@@ -1889,7 +1901,13 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
 
     out.writeBoolean(this.bot);
 
-    out.writeString(this.notifyUrl);
+    if (this.notifyUrl == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      out.writeString(this.notifyUrl);
+    }
 
     out.writeBoolean(this.minor);
 
@@ -1919,7 +1937,13 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
 
     out.writeString(this.wiki);
 
-    out.writeString(this.parsedcomment);
+    if (this.parsedcomment == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      out.writeString(this.parsedcomment);
+    }
 
   }
 
@@ -1928,10 +1952,15 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.rcschema = in.readString();
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.rcschema = null;
+      } else {
+        this.rcschema = in.readString();
+      }
 
       if (this.meta == null) {
-        this.meta = new com.event.driven.microservices.kafka.avro.model.MetadataArvoModel();
+        this.meta = new com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel();
       }
       this.meta.customDecode(in);
 
@@ -1943,7 +1972,12 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
 
       this.title = in.readString();
 
-      this.titleUrl = in.readString();
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.titleUrl = null;
+      } else {
+        this.titleUrl = in.readString();
+      }
 
       this.comment = in.readString();
 
@@ -1953,7 +1987,12 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
 
       this.bot = in.readBoolean();
 
-      this.notifyUrl = in.readString();
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.notifyUrl = null;
+      } else {
+        this.notifyUrl = in.readString();
+      }
 
       this.minor = in.readBoolean();
 
@@ -1987,18 +2026,28 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
 
       this.wiki = in.readString();
 
-      this.parsedcomment = in.readString();
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.parsedcomment = null;
+      } else {
+        this.parsedcomment = in.readString();
+      }
 
     } else {
       for (int i = 0; i < 21; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.rcschema = in.readString();
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.rcschema = null;
+          } else {
+            this.rcschema = in.readString();
+          }
           break;
 
         case 1:
           if (this.meta == null) {
-            this.meta = new com.event.driven.microservices.kafka.avro.model.MetadataArvoModel();
+            this.meta = new com.event.driven.microservices.kafka.avro.model.RCMetadataArvoModel();
           }
           this.meta.customDecode(in);
           break;
@@ -2020,7 +2069,12 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
           break;
 
         case 6:
-          this.titleUrl = in.readString();
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.titleUrl = null;
+          } else {
+            this.titleUrl = in.readString();
+          }
           break;
 
         case 7:
@@ -2040,7 +2094,12 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
           break;
 
         case 11:
-          this.notifyUrl = in.readString();
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.notifyUrl = null;
+          } else {
+            this.notifyUrl = in.readString();
+          }
           break;
 
         case 12:
@@ -2092,7 +2151,12 @@ public class WikimediaRCArvoModel extends org.apache.avro.specific.SpecificRecor
           break;
 
         case 20:
-          this.parsedcomment = in.readString();
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.parsedcomment = null;
+          } else {
+            this.parsedcomment = in.readString();
+          }
           break;
 
         default:

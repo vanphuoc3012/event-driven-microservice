@@ -1,4 +1,5 @@
-data-stream-to-kafka-service:
+wikimedia-stream-to-kafka-service:
+  stream-url: https://stream.wikimedia.org/v2/stream/recentchange
   data-stream-filter-keywords:
     - Java
     - Spring

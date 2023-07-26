@@ -17,7 +17,7 @@ protocol WikimediaProtocol {
 		long new;
 	}
 
-	record MetadataArvoModel {
+	record RCMetadataArvoModel {
 		string uri;
 		string requestId;
 		string id;
@@ -30,18 +30,18 @@ protocol WikimediaProtocol {
 	}
 
 	record WikimediaRCArvoModel {
-		string rcschema;
-		MetadataArvoModel meta;
+		string? rcschema;
+		RCMetadataArvoModel meta;
 		long id;
 		string type;
 		long rcnamespace;
 		string title;
-		string titleUrl;
+		string? titleUrl;
 		string comment;
 		string timestamp;
 		string user;
 		boolean bot;
-		string notifyUrl;
+		string? notifyUrl;
 		boolean minor;
 		boolean patrolled;
 		RCLengthArvoModel? length;
@@ -50,6 +50,6 @@ protocol WikimediaProtocol {
 		string serverName;
 		string serverScriptPath;
 		string wiki;
-		string parsedcomment;
+		string? parsedcomment;
 	}
 }

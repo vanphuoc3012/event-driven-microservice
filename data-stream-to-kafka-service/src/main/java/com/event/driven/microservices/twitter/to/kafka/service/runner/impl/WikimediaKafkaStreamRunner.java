@@ -1,13 +1,16 @@
 package com.event.driven.microservices.twitter.to.kafka.service.runner.impl;
 
-import com.event.driven.microservices.app.config.DataStreamToKafkaConfigData;
+import com.event.driven.microservices.app.config.KafkaConfigData;
+import com.event.driven.microservices.app.config.WikimediaStreamToKafkaConfigData;
+import com.event.driven.microservices.kafka.avro.model.WikimediaRCArvoModel;
+import com.event.driven.microservices.kafka.producer.service.KafkaProducer;
+import com.event.driven.microservices.twitter.to.kafka.service.dto.WikimediaRecentChangeDto;
 import com.event.driven.microservices.twitter.to.kafka.service.runner.StreamRunner;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.event.driven.microservices.twitter.to.kafka.service.transformer.WikimediaRCToAvroTransformer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.codec.ServerSentEvent;
-import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.Disposable;
@@ -21,47 +24,46 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class WikimediaKafkaStreamRunner implements StreamRunner {
 
-    private final DataStreamToKafkaConfigData dataStreamToKafkaConfigData;
-    private final WebClient webClient = WebClient.create("https://stream.wikimedia.org/v2/stream");
-    private final MappingJackson2MessageConverter jsonConverter = new MappingJackson2MessageConverter();
-
+    private final WikimediaStreamToKafkaConfigData wikimediaStreamToKafkaConfigData;
+    private final WebClient webClient;
+    private final KafkaProducer<Long, WikimediaRCArvoModel> kafkaProducer;
+    private final WikimediaRCToAvroTransformer transformer;
+    private final KafkaConfigData kafkaConfigData;
     private Disposable subscription;
 
     @Override
     public void start() {
         log.info("Start stream");
-        var mapper = jsonConverter.getObjectMapper();
-        ParameterizedTypeReference<ServerSentEvent<String>> type = new ParameterizedTypeReference<>() {
+        ParameterizedTypeReference<ServerSentEvent<WikimediaRecentChangeDto>> type = new ParameterizedTypeReference<>() {
         };
 
-        Flux<ServerSentEvent<String>> eventStream = webClient.get()
-                .uri("/recentchange")
-                .retrieve()
-                .bodyToFlux(type);
+        Flux<ServerSentEvent<WikimediaRecentChangeDto>> eventStream = webClient.get()
+                                                                               .uri(wikimediaStreamToKafkaConfigData.getStreamUrl())
+                                                                               .retrieve()
+                                                                               .bodyToFlux(type);
 
-        var domainFilter = dataStreamToKafkaConfigData.getDomainFilter();
+        var domainFilter = wikimediaStreamToKafkaConfigData.getDomainFilter();
 
-        subscription = eventStream
-                .subscribe(
-                        (content -> {
-                            if (Objects.nonNull(content.data())) {
-                                try {
-                                    var jsonNode = mapper.readTree(content.data());
-                                    var domain = jsonNode.get("server_name").asText();
-                                    if (Objects.nonNull(domain) && domainFilter.contains(domain)) {
-                                        log.info(mapper.writerWithDefaultPrettyPrinter()
-                                                .writeValueAsString(jsonNode));
-                                    }
-                                } catch (JsonProcessingException e) {
-                                    log.error("Error processing json", e);
-                                }
-                            }
-                        }),
-                        (error -> {
-                            log.error("Error receiving SSE: " + error);
-                            error.printStackTrace();
-                        }),
-                        () -> log.info("Completed!!!"));
+        subscription = eventStream.subscribe((content -> {
+            var rcEvent = content.data();
+            log.debug("Received event {}", rcEvent);
+
+            if (Objects.isNull(rcEvent)) {
+                return;
+            }
+
+            var serverName = rcEvent.getServerName();
+            if (domainFilter.contains(serverName)) {
+                log.info("Filtered rc event: {}", rcEvent);
+                var rcArvoModel = transformer.getWikimediaRCAvroFromWikimediaJSONResponse(rcEvent);
+                kafkaProducer.send(kafkaConfigData.getTopicName(),
+                                   rcArvoModel.getId(),
+                                   rcArvoModel);
+            }
+        }), (error -> {
+            log.error("Error receiving SSE: " + error);
+            error.printStackTrace();
+        }), () -> log.info("Completed!!!"));
     }
 
     @PreDestroy
@@ -70,7 +72,5 @@ public class WikimediaKafkaStreamRunner implements StreamRunner {
         if (Objects.nonNull(subscription)) {
             subscription.dispose();
         }
-
     }
-
 }

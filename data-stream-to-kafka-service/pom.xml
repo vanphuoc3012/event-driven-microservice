@@ -23,9 +23,13 @@
         </dependency>
 
         <dependency>
+            <groupId>com.event.driven.microservices</groupId>
+            <artifactId>kafka-producer</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.event.driven.microservice</groupId>
             <artifactId>app-config-data</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
