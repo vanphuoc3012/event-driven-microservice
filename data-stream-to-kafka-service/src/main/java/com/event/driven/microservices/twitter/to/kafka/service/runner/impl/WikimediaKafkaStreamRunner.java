@@ -70,6 +70,7 @@ public class WikimediaKafkaStreamRunner implements StreamRunner {
         if (Objects.nonNull(subscription)) {
             subscription.dispose();
         }
+
     }
 
 }

@@ -13,6 +13,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.event.driven.microservices</groupId>
+            <artifactId>kafka-admin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.event.driven.microservices</groupId>
+            <artifactId>kafka-model</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.event.driven.microservice</groupId>
             <artifactId>app-config-data</artifactId>
             <version>${project.version}</version>
