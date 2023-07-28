@@ -51,16 +51,16 @@ public class WikimediaRecentChangeDto {
 
     @Data
     public class RCMeta {
-        public String uri;
+        private String uri;
         @JsonProperty("request_id")
-        public String requestId;
-        public String id;
-        public Date dt;
-        public String domain;
-        public String stream;
-        public String topic;
-        public long partition;
-        public long offset;
+        private String requestId;
+        private String id;
+        private Date dt;
+        private String domain;
+        private String stream;
+        private String topic;
+        private long partition;
+        private long offset;
     }
 }
 
