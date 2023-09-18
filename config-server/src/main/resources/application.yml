@@ -7,11 +7,20 @@ logging:
     org.springframework.cloud.config: debug
 
 spring:
+  profiles:
+    active: dev
   cloud:
     config:
       server:
         git:
-          uri: file://mnt/hdd/Projects/event-driven-microservices
-          basedir: config-server-repository
+          uri: https://github.com/vanphuoc3012/springcloud-config-repo.git
           clone-on-start: true
+          username: vanphuoc3012
+          password: "{cipher}c55aec49fee0e4e2b9919ef202cebb6c0b5a106664908e41b5207c4208d02f8ec394b0d5a030e3d0c23ffabc0a42295135f4b251cb21d0ac0c206eae591ab059"
       fail-fast: true
+      username: user
+      password: "{cipher}8f12f8a37d505da825b5fce263b088cc360469ca5612d893f24c00b2452f70c6"
+#  security:
+#    user:
+#      name: user
+#      password: "{cipher}8f12f8a37d505da825b5fce263b088cc360469ca5612d893f24c00b2452f70c6"
