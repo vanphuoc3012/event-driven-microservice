@@ -34,3 +34,5 @@ build/
 
 logs/
 /docker-compose/docker-logs
+.git_old
+.git_old1

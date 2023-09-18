@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+logging:
+  level:
+    root: info
+    org.springframework.cloud.config: debug
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: file://mnt/hdd/Projects/event-driven-microservices
+          basedir: config-server-repository
+          clone-on-start: true
+      fail-fast: true

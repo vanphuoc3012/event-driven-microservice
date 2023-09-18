@@ -1,0 +1,50 @@
+wikimedia-stream-to-kafka-service:
+  stream-url: https://stream.wikimedia.org/v2/stream/recentchange
+  data-stream-filter-keywords:
+    - Java
+    - Spring
+    - Microservices
+    - Kafka
+    - Elasticsearch
+  domain-filter:
+    - en.wikipedia.org
+    - vi.wikipedia.org
+
+retry-config:
+  initial-interval-ms: 1000
+  max-interval-ms: 100000
+  multiplier: 2.0
+  max-attempts: 3
+  sleep-time-ms: 2000
+
+kafka-config:
+  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
+  schema-registry-url-key: schema.registry.url
+  schema-registry-url: http://localhost:8081
+  topic-name: wikimedia-recent-changes
+  topic-names-to-create:
+    - wikimedia-recent-changes
+  number-partitions: 3
+  replication-factor: 3
+
+kafka-producer-config:
+  key-serializer-class: org.apache.kafka.common.serialization.LongSerializer
+  value-serializer-class: io.confluent.kafka.serializers.KafkaAvroSerializer
+  compression-type: snappy
+  acks: all
+  batch-size: 16384
+  batch-size-boost-factor: 100
+  linger-ms: 5
+  request-time-out-ms: 60000
+  retry-count: 5
+
+
+logging:
+  level:
+    root: info
+  file:
+    name: logs/twitter-to-kafka-service.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 10
