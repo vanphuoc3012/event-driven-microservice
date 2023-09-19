@@ -9,10 +9,10 @@
         <version>2.7.13</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.event.driven.microservice</groupId>
-    <artifactId>event-driven-microservice</artifactId>
+    <groupId>com.event.driven.microservices</groupId>
+    <artifactId>event-driven-microservices</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>event-driven-microservice</name>
+    <name>event-driven-microservices</name>
     <description>Event-driven microservice</description>
 
     <modules>

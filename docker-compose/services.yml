@@ -5,12 +5,31 @@ services:
     ports:
       - "5005:5005"
     volumes:
-      - "./docker-logs:/workspace/logs"
+      - "./docker-logs:/workspace/wikimedia-to-kafka-service/logs"
+      - "./testservice/:/workspace/testservice/"
+    user: root
+    entrypoint:
+      - /bin/sh
+      - /workspace/testservice/check-conifg-service-started.sh
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xms128m -Xmx256m"
       - "LOGGING_LEVEL_COM_EVENT_MICROSERVICES=DEBUG"
       - "LOGGING_LEVEL_ROOT=INFO"
       - "KAFKA_CONFIG_BOOTSTRAP_SERVERS=kafka-broker-1:9092,kafka-broker-2:9092,kafka-broker-3:9092"
       - "KAFKA_CONFIG_SCHEMA_REGISTRY_URL=http://schema-registry:8081"
+      - "SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:8888"
+      - "ENCRYPT_KEY=${ENCRYPT_KEY}"
     networks:
-      - ${GLOBAL_NETWORK:-kafka}
+      - ${GLOBAL_NETWORK:-services}
+
+  config-server:
+    image: ${GROUP_ID}/config.server:${SERVICE_VERSION:-latest}
+    ports:
+      - "5006:5006"
+    volumes:
+      - "./docker-logs:/workspace/config-server/logs"
+    environment:
+      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006 -Xms128m -Xmx256m"
+      - "ENCRYPT_KEY=${ENCRYPT_KEY}"
+    networks:
+      - ${GLOBAL_NETWORK:-services}

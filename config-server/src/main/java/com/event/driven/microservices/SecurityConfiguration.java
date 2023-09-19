@@ -11,7 +11,10 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().ignoringAntMatchers("/encrypt/**").ignoringAntMatchers("/decrypt/**");
+        http.csrf()
+            .ignoringAntMatchers("/encrypt/**")
+            .ignoringAntMatchers("/decrypt/**")
+            .ignoringAntMatchers("/actutor/**");
 
 //        http.authorizeRequests()
 //            .antMatchers("/encrypt/**")
