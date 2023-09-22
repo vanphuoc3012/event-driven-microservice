@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+
+    <property name="APP-NAME" value="data-stream-to-kafka"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="com/event/driven/microservices/app/config/logback-common.xml"/>
+</configuration>
