@@ -37,8 +37,7 @@ public class KafkaAdminClient {
         try {
             retryTemplate.execute(this::doCreateTopics);
         } catch (Throwable e) {
-            throw new KafkaClientException("Reached maximum number of retry for creating kafka " +
-                                                   "topics !");
+            throw new KafkaClientException("Reached maximum number of retry for creating kafka " + "topics !");
         }
 
         checkTopicsCreated();
@@ -47,15 +46,15 @@ public class KafkaAdminClient {
     private CreateTopicsResult doCreateTopics(RetryContext retryContext) {
         var topicNames = kafkaConfigData.getTopicNamesToCreate();
         log.info("Creating {} topics, attempt {}", topicNames, retryContext.getRetryCount());
-        List<NewTopic> kafkaTopics = topicNames.stream().map(topic -> new NewTopic(
-                topic.trim(),
-                kafkaConfigData.getNumberPartitions(),
-                kafkaConfigData.getReplicationFactor()
-        )).collect(Collectors.toList());
+        List<NewTopic> kafkaTopics = topicNames.stream()
+                                               .map(topic -> new NewTopic(topic.trim(),
+                                                                          kafkaConfigData.getNumberPartitions(),
+                                                                          kafkaConfigData.getReplicationFactor()))
+                                               .collect(Collectors.toList());
         return adminClient.createTopics(kafkaTopics);
     }
 
-    private void checkTopicsCreated() {
+    public void checkTopicsCreated() {
         var topics = getTopics();
         int retryCount = 1;
         Integer maxRetry = retryConfigData.getMaxAttempts();
@@ -85,11 +84,10 @@ public class KafkaAdminClient {
 
     private HttpStatus getSchemaRegistryStatusCode() {
         try {
-            return webClient
-                    .get()
-                    .uri(kafkaConfigData.getSchemaRegistryUrl())
-                    .exchangeToMono(clientResponse -> Mono.just(clientResponse.statusCode()))
-                    .block();
+            return webClient.get()
+                            .uri(kafkaConfigData.getSchemaRegistryUrl())
+                            .exchangeToMono(clientResponse -> Mono.just(clientResponse.statusCode()))
+                            .block();
         } catch (Exception e) {
             return HttpStatus.SERVICE_UNAVAILABLE;
         }
@@ -105,8 +103,7 @@ public class KafkaAdminClient {
 
     private void checkMaxRetry(Integer retry, Integer maxRetry) {
         if (retry > maxRetry) {
-            throw new KafkaClientException(
-                    "Reached max number of retry for reading kafka topic(s)!!");
+            throw new KafkaClientException("Reached max number of retry for reading kafka topic(s)!!");
         }
     }
 
@@ -115,7 +112,6 @@ public class KafkaAdminClient {
             return false;
         }
         return topics.stream().anyMatch(topic -> topic.name().equals(topicToCheck));
-
     }
 
     public Collection<TopicListing> getTopics() {
@@ -123,14 +119,14 @@ public class KafkaAdminClient {
         try {
             topics = retryTemplate.execute(this::doGetTopics);
         } catch (Exception e) {
-            throw new KafkaClientException("Reached maximum number of retry for creating kafka " +
-                                                   "topics !");
+            throw new KafkaClientException("Reached maximum number of retry for creating kafka " + "topics !");
         }
 
         return topics;
     }
 
-    private Collection<TopicListing> doGetTopics(RetryContext retryContext) throws ExecutionException, InterruptedException {
+    private Collection<TopicListing> doGetTopics(
+            RetryContext retryContext) throws ExecutionException, InterruptedException {
         log.info("Reading kafka topic {}, attempt {}", kafkaConfigData.getTopicNamesToCreate(),
                  retryContext.getRetryCount());
         Collection<TopicListing> topics = adminClient.listTopics().listings().get();

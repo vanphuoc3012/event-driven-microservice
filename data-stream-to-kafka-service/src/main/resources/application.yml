@@ -1,4 +1,9 @@
 spring:
+  cloud:
+    config:
+      username: user
+      fail-fast: true
+      password: "{cipher}2affbafff8dd5d6006af3ffddc87eca5bdfbc04c7cf7e5c5845c3ec8cecd3b25"
   application:
     name: DataToKafkaService
   profiles:
@@ -6,8 +11,6 @@ spring:
   config:
     import: "optional:configserver:http://localhost:8888"
     name: config-client, DataToKafkaService
-    username: user
-    password: "{cipher}2affbafff8dd5d6006af3ffddc87eca5bdfbc04c7cf7e5c5845c3ec8cecd3b25"
 logging:
   level:
     org.springframework.cloud.config: debug

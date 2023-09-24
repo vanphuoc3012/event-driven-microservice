@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: KafkaToElasticService
+  profiles:
+    active: dev
+  config:
+    import: "optional:configserver:http://localhost:8888"
+    name: config-client, KafkaToElasticService
+  cloud:
+    config:
+      username: user
+      password: "{cipher}2affbafff8dd5d6006af3ffddc87eca5bdfbc04c7cf7e5c5845c3ec8cecd3b25"
+      fail-fast: true

@@ -14,14 +14,14 @@ public class KafkaConsumerConfigData {
     private String autoOffsetReset;
     private String specificAvroReaderKey;
     private String specificAvroReader;
-    private String batchListener;
-    private String autoStartup;
-    private String concurrencyLevel;
-    private String sessionTimeOutMs;
-    private String heartBeatIntervalsMs;
-    private String maxPollIntervalMs;
-    private String maxPollRecords;
-    private String maxPartitionFetchBytesDefault;
-    private String maxPartitionFetchBytesBoostFactor;
+    private Boolean batchListener;
+    private Boolean autoStartup;
+    private Integer concurrencyLevel;
+    private Integer sessionTimeOutMs;
+    private Integer heartBeatIntervalsMs;
+    private Integer maxPollIntervalMs;
+    private Integer maxPollRecords;
+    private Integer maxPartitionFetchBytesDefault;
+    private Integer maxPartitionFetchBytesBoostFactor;
     private Long pollTimeOutMs;
 }

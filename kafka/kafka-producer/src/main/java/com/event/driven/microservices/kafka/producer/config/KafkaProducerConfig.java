@@ -26,8 +26,7 @@ public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecor
     public Map<String, Object> producerConfig() {
         Map<String, Object> props = new HashMap<>();
         props.put(BOOTSTRAP_SERVERS_CONFIG, kafkaConfigData.getBootstrapServers());
-        props.put(kafkaConfigData.getSchemaRegistryUrlKey(),
-                  kafkaConfigData.getSchemaRegistryUrl());
+        props.put(kafkaConfigData.getSchemaRegistryUrlKey(), kafkaConfigData.getSchemaRegistryUrl());
         props.put(KEY_SERIALIZER_CLASS_CONFIG, kafkaProducerConfigData.getKeySerializerClass());
         props.put(VALUE_SERIALIZER_CLASS_CONFIG, kafkaProducerConfigData.getValueSerializerClass());
         props.put(BATCH_SIZE_CONFIG,
@@ -37,7 +36,6 @@ public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecor
         props.put(ACKS_CONFIG, kafkaProducerConfigData.getAcks());
         props.put(REQUEST_TIMEOUT_MS_CONFIG, kafkaProducerConfigData.getRequestTimeOutMs());
         props.put(RETRIES_CONFIG, kafkaProducerConfigData.getRetryCount());
-
         return props;
     }
 
