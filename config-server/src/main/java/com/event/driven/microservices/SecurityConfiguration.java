@@ -16,10 +16,8 @@ public class SecurityConfiguration {
         http.httpBasic()
             .and()
             .authorizeRequests()
-            .antMatchers("/encrypt/**")
-            .authenticated()
-            .antMatchers("/decrypt/**")
-            .authenticated()
+            .antMatchers("/actuator/health")
+            .permitAll()
             .anyRequest()
             .authenticated();
 //        http.authorizeRequests()

@@ -1,16 +1,19 @@
+server:
+  port: 8181
 spring:
+  profiles:
+    active: dev
+  application:
+    name: DataToKafkaService
   cloud:
     config:
       username: user
-      fail-fast: true
       password: "{cipher}2affbafff8dd5d6006af3ffddc87eca5bdfbc04c7cf7e5c5845c3ec8cecd3b25"
-  application:
-    name: DataToKafkaService
-  profiles:
-    active: dev
+      name: DataToKafkaService
+      uri: http://127.0.0.1:8888
   config:
-    import: "optional:configserver:http://localhost:8888"
-    name: config-client, DataToKafkaService
+    name: DataToKafkaService
+    import: optional:configserver:http://127.0.0.1:8888
 logging:
   level:
     org.springframework.cloud.config: debug

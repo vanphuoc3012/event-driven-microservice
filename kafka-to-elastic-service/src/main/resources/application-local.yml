@@ -1,4 +1,8 @@
 spring:
+  application:
+    name: KafkaToElasticService
+  profiles:
+    active: dev
   config:
     import: "optional:configserver:http://localhost:8888"
     name: config-client, KafkaToElasticService
